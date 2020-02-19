@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "web-app",
+  "version": "1.0.0",
+  "description": "React Web App",
+  "scripts": {
+    "develop": "parcel index.html --open",
+    "clean": "rimraf ./dist",
+    "build": "parcel build index.html",
+    "start": "static-server ./dist"
+  },
+  "dependencies": {
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "static-server": "2.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "13.7.1",
+    "@types/react": "16.9.19",
+    "@types/react-dom": "16.9.5",
+    "parcel-bundler": "1.12.4",
+    "rimraf": "3.0.2",
+    "typescript": "3.7.5"
+  }
+}

@@ -1,0 +1,63 @@
+version: '3'
+services:
+  web-app:
+    image: 'mikebild/web-app'
+    build: ./web-app
+    container_name: web-app
+    ports:
+      - '8080:9080'
+    depends_on:
+      - products-api
+    links:
+      - products-api
+    environment:
+      - PRODUCTS_API_URL=http://localhost:8081
+      - INVOICES_API_URL=http://localhost:8082
+      - CARDS_API_URL=http://localhost:8083
+  products-api:
+    image: 'mikebild/products-api'
+    build: ./products-api
+    container_name: products-api
+    ports:
+      - '8081:8080'
+    depends_on:
+      - redis
+    links:
+      - redis
+    environment:
+      - BASE_URL=localhost
+  cards-api:
+    image: 'mikebild/cards-api'
+    build: ./cards-api
+    container_name: cards-api
+    ports:
+      - '8082:8080'
+    depends_on:
+      - redis
+    links:
+      - redis
+    environment:
+      - BASE_URL=localhost
+  invoices-api:
+    image: 'mikebild/invoices-api'
+    build: ./invoices-api
+    container_name: invoices-api
+    ports:
+      - '8083:8080'
+    depends_on:
+      - redis
+    links:
+      - redis
+    environment:
+      - BASE_URL=localhost
+  redis:
+    image: redis:alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    container_name: redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

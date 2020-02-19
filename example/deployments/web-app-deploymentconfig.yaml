@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml --provider=openshift
+    kompose.version: 1.20.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web-app
+  name: web-app
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: web-app
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: web-app
+    spec:
+      containers:
+      - env:
+        - name: PRODUCTS_API_URL
+          value: http://products-api-workshop.e4ff.pro-eu-west-1.openshiftapps.com
+        image: ' '
+        name: web-app
+        ports:
+        - containerPort: 9080
+        resources: {}
+      restartPolicy: Always
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - web-app
+      from:
+        kind: ImageStreamTag
+        name: web-app:latest
+    type: ImageChange
+status: {}

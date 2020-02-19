@@ -1,0 +1,7 @@
+[
+  { "Id": "175e9218-c1a7-48eb-aa05-db2d80a55f1e", "Description": "Product A", "Price": 1.2 },
+  { "Id": "275e9218-c1a7-48eb-aa05-db2d80a55f1e", "Description": "Product B", "Price": 2.2 },
+  { "Id": "375e9218-c1a7-48eb-aa05-db2d80a55f1e", "Description": "Product C", "Price": 3.4 },
+  { "Id": "ac3cb29f-9dcf-4eb2-aa95-fbecfbbc4743", "Description": "Product D", "Price": 1.1 },
+  { "Id": "9cf8556b-e9f8-4f85-aee3-57cdd45a5774", "Description": "Product A", "Price": 1.33333 }
+]
